@@ -1,0 +1,44 @@
+CREATE TABLE Bank (
+    acc_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    balance DECIMAL(10,2)
+);
+
+INSERT INTO Bank VALUES
+(101, 'Om Sukase', 50000),
+(102, 'Sudarshan Ugale', 45000),
+(103, 'Shriraj Wakchaure', 60000),
+(104, 'Rohit Patil', 35000),
+(105, 'Amit Sharma', 40000);
+
+DELIMITER $$
+
+CREATE TRIGGER set_zero_balance
+BEFORE INSERT ON Bank
+FOR EACH ROW
+BEGIN
+    IF NEW.balance IS NULL THEN
+        SET NEW.balance = 0;
+    END IF;
+END$$
+
+CREATE TRIGGER prevent_negative_balance
+BEFORE UPDATE ON Bank
+FOR EACH ROW
+BEGIN
+    IF NEW.balance < 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Balance cannot be negative';
+    END IF;
+END$$
+
+DELIMITER ;
+
+INSERT INTO Bank (acc_id, name, balance)
+VALUES (106, 'Priya Joshi', NULL);
+
+UPDATE Bank
+SET balance = -5000
+WHERE acc_id = 101;
+
+SELECT * FROM Bank;
