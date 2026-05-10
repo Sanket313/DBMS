@@ -1,0 +1,50 @@
+use StudentDB
+
+db.students.insertMany([
+    {
+        name: "Om Sukase",
+        marks: 85,
+        subject: "Mathematics"
+    },
+    {
+        name: "Sudarshan Ugale",
+        marks: 72,
+        subject: "Mathematics"
+    },
+    {
+        name: "Shriraj Wakchaure",
+        marks: 91,
+        subject: "Science"
+    },
+    {
+        name: "Rohit Patil",
+        marks: 68,
+        subject: "Science"
+    },
+    {
+        name: "Amit Sharma",
+        marks: 75,
+        subject: "English"
+    },
+    {
+        name: "Priya Joshi",
+        marks: 80,
+        subject: "English"
+    }
+])
+
+db.students.aggregate([
+    {
+        $group: {
+            _id: "$subject",
+            averageMarks: { $avg: "$marks" },
+            totalStudents: { $sum: 1 },
+            highestMarks: { $max: "$marks" },
+            totalMarks: { $sum: "$marks" }
+        }
+    }
+])
+
+db.students.find().sort({ marks: 1 })
+
+db.students.find().sort({ marks: -1 })
