@@ -1,0 +1,67 @@
+CREATE TABLE Books (
+    book_id INT PRIMARY KEY,
+    book_name VARCHAR(100) NOT NULL,
+    author_name VARCHAR(100),
+    category VARCHAR(50)
+);
+
+CREATE TABLE Issue (
+    issue_id INT PRIMARY KEY,
+    book_id INT,
+    student_name VARCHAR(100),
+    issue_date DATE,
+    return_date DATE,
+    FOREIGN KEY (book_id) REFERENCES Books(book_id)
+);
+
+INSERT INTO Books VALUES
+(101, 'Java Programming', 'James Gosling', 'Programming'),
+(102, 'Database Systems', 'Korth', 'Database'),
+(103, 'Python Basics', 'Guido Van Rossum', 'Programming'),
+(104, 'Computer Networks', 'Andrew Tanenbaum', 'Networking'),
+(105, 'Operating Systems', 'Galvin', 'System');
+
+INSERT INTO Issue VALUES
+(1, 101, 'Om Sukase', '2026-05-01', NULL),
+(2, 102, 'Sudarshan Ugale', '2026-05-02', '2026-05-10'),
+(3, 103, 'Shriraj Wakchaure', '2026-05-03', NULL),
+(4, 101, 'Rohit Patil', '2026-05-05', '2026-05-12'),
+(5, 104, 'Amit Sharma', '2026-05-06', NULL);
+
+SELECT 
+    Books.book_id,
+    Books.book_name,
+    Issue.student_name,
+    Issue.issue_date
+FROM Books
+INNER JOIN Issue
+ON Books.book_id = Issue.book_id;
+
+SELECT 
+    Books.book_id,
+    Books.book_name,
+    Issue.student_name,
+    Issue.issue_date
+FROM Books
+LEFT JOIN Issue
+ON Books.book_id = Issue.book_id;
+
+SELECT 
+    Books.book_id,
+    Books.book_name,
+    Issue.student_name,
+    Issue.issue_date
+FROM Books
+RIGHT JOIN Issue
+ON Books.book_id = Issue.book_id;
+
+CREATE VIEW Current_Issued_Books AS
+SELECT 
+    Books.book_id,
+    Books.book_name,
+    Issue.student_name,
+    Issue.issue_date
+FROM Books
+INNER JOIN Issue
+ON Books.book_id = Issue.book_id
+WHERE Issue.return_date IS NULL;
