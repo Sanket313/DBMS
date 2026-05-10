@@ -1,0 +1,40 @@
+CREATE TABLE Accounts (
+    account_id INT PRIMARY KEY,
+    account_holder VARCHAR(100) NOT NULL,
+    balance DECIMAL(12,2) CHECK (balance >= 0)
+);
+
+INSERT INTO Accounts VALUES
+(101, 'Om Sukase', 50000.00),
+(102, 'Sudarshan Ugale', 45000.00),
+(103, 'Shriraj Wakchaure', 60000.00),
+(104, 'Rohit Patil', 35000.00),
+(105, 'Amit Sharma', 40000.00);
+
+START TRANSACTION;
+
+UPDATE Accounts
+SET balance = balance - 5000
+WHERE account_id = 101;
+
+SAVEPOINT after_debit;
+
+UPDATE Accounts
+SET balance = balance + 5000
+WHERE account_id = 102;
+
+ROLLBACK TO after_debit;
+
+UPDATE Accounts
+SET balance = balance + 5000
+WHERE account_id = 103;
+
+COMMIT;
+
+GRANT SELECT
+ON Accounts
+TO student_user;
+
+REVOKE UPDATE
+ON Accounts
+FROM student_user;
