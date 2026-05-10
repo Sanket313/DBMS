@@ -1,0 +1,55 @@
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(100) NOT NULL,
+    age INT CHECK (age >= 18),
+    phone VARCHAR(15) UNIQUE
+);
+
+CREATE TABLE Courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(100) NOT NULL,
+    duration_months INT NOT NULL
+);
+
+CREATE TABLE Enrollments (
+    enrollment_id INT PRIMARY KEY,
+    student_id INT,
+    course_id INT,
+    enrollment_date DATE NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
+);
+
+INSERT INTO Students VALUES
+(101, 'Om Sukase', 20, '9876543210'),
+(102, 'Sudarshan Ugale', 21, '9876543211'),
+(103, 'Shriraj Wakchaure', 22, '9876543212'),
+(104, 'Rohit Patil', 19, '9876543213'),
+(105, 'Amit Sharma', 23, '9876543214');
+
+INSERT INTO Courses VALUES
+(201, 'Java Programming', 6),
+(202, 'Database Management', 4),
+(203, 'Python Programming', 5),
+(204, 'Web Development', 3),
+(205, 'Data Structures', 4);
+
+INSERT INTO Enrollments VALUES
+(1, 101, 201, '2026-01-10'),
+(2, 102, 202, '2026-01-12'),
+(3, 103, 203, '2026-01-15'),
+(4, 104, 204, '2026-01-18'),
+(5, 105, 205, '2026-01-20');
+
+ALTER TABLE Students
+ADD email VARCHAR(100) UNIQUE;
+
+CREATE TABLE UnusedTable (
+    id INT
+);
+
+RENAME TABLE Courses TO Course_Details;
+
+DROP TABLE UnusedTable;
+
+TRUNCATE TABLE Enrollments;
