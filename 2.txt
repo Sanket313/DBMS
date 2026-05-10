@@ -1,0 +1,55 @@
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    city VARCHAR(50)
+);
+
+CREATE TABLE Products (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(100) NOT NULL,
+    price DECIMAL(10,2) CHECK (price > 0),
+    stock INT NOT NULL
+);
+
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    product_id INT,
+    quantity INT NOT NULL,
+    order_date DATE,
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+);
+
+INSERT INTO Customers VALUES
+(1, 'Om Sukase', 'om@gmail.com', 'Mumbai'),
+(2, 'Sudarshan Ugale', 'sudarshan@gmail.com', 'Pune'),
+(3, 'Shriraj Wakchaure', 'shriraj@gmail.com', 'Nashik'),
+(4, 'Rohit Patil', 'rohit@gmail.com', 'Thane'),
+(5, 'Amit Sharma', 'amit@gmail.com', 'Nagpur');
+
+INSERT INTO Products VALUES
+(101, 'Laptop', 55000.00, 10),
+(102, 'Smartphone', 25000.00, 20),
+(103, 'Headphones', 2000.00, 50),
+(104, 'Keyboard', 1500.00, 30),
+(105, 'Mouse', 800.00, 40);
+
+INSERT INTO Orders VALUES
+(1001, 1, 101, 1, '2026-05-01'),
+(1002, 2, 102, 2, '2026-05-02'),
+(1003, 3, 103, 1, '2026-05-03'),
+(1004, 4, 104, 3, '2026-05-04'),
+(1005, 5, 105, 2, '2026-05-05');
+
+ALTER TABLE Products
+ADD discount DECIMAL(5,2);
+
+RENAME TABLE Orders TO Customer_Orders;
+
+CREATE TABLE Temporary_Table (
+    id INT
+);
+
+DROP TABLE Temporary_Table;
