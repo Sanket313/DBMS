@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Gym Membership Form</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+}
+
+.card{
+
+width:450px;
+margin:auto;
+margin-top:40px;
+padding:25px;
+
+background:white;
+
+border-radius:15px;
+
+box-shadow:0px 0px 15px gray;
+
+}
+
+h2{
+text-align:center;
+color:#27ae60;
+}
+
+img{
+width:100%;
+height:220px;
+
+border-radius:10px;
+
+margin-bottom:20px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin-top:8px;
+margin-bottom:15px;
+
+border:1px solid gray;
+
+border-radius:5px;
+}
+
+input[type=submit]{
+
+background:#27ae60;
+
+color:white;
+
+border:none;
+
+cursor:pointer;
+
+font-size:16px;
+}
+
+input[type=submit]:hover{
+background:green;
+}
+
+.plans{
+
+width:300px;
+margin:auto;
+margin-top:20px;
+padding:15px;
+
+background:#eafaf1;
+
+border-radius:10px;
+
+box-shadow:0px 0px 10px gray;
+
+text-align:center;
+}
+
+</style>
+
+<script>
+
+function validate(){
+
+let mobile=document.getElementById("mobile").value;
+
+let email=document.getElementById("email").value;
+
+if(mobile.length!=10){
+alert("Invalid Mobile Number");
+return false;
+}
+
+if(!email.includes("@")){
+alert("Invalid Email");
+return false;
+}
+
+alert("Registration Successful");
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Gym Membership Registration</h2>
+
+<img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800">
+
+<form method="post"
+onsubmit="return validate()">
+
+Member Name:
+<input type="text" name="name">
+
+Mobile Number:
+<input type="text"
+id="mobile"
+name="mobile">
+
+Email:
+<input type="text"
+id="email"
+name="email">
+
+Membership Plan:
+
+<select name="plan">
+
+<option>Monthly</option>
+<option>Quarterly</option>
+<option>Yearly</option>
+
+</select>
+
+<input type="submit"
+value="Register">
+
+</form>
+
+</div>
+
+<?php
+
+$plans=array(
+"Monthly Plan",
+"Quarterly Plan",
+"Yearly Plan"
+);
+
+echo "<div class='plans'>";
+
+echo "<h3>Membership Plans</h3>";
+
+foreach($plans as $p){
+
+echo $p."<br><br>";
+
+}
+
+echo "</div>";
+
+?>
+
+</body>
+</html>
