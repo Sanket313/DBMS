@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Travel Booking Webpage</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+
+background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200');
+
+background-size:cover;
+
+background-repeat:no-repeat;
+
+background-attachment:fixed;
+
+}
+
+.card{
+
+width:750px;
+margin:auto;
+margin-top:40px;
+padding:25px;
+
+background:rgba(255,255,255,0.9);
+
+border-radius:15px;
+
+box-shadow:0px 0px 15px black;
+
+}
+
+h1{
+text-align:center;
+color:#0066cc;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+table,th,td{
+border:1px solid black;
+padding:12px;
+text-align:center;
+}
+
+th{
+background:#0066cc;
+color:white;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin-top:8px;
+margin-bottom:15px;
+
+border-radius:5px;
+border:1px solid gray;
+}
+
+button{
+
+padding:10px 20px;
+
+background:#0066cc;
+
+color:white;
+
+border:none;
+
+border-radius:5px;
+
+cursor:pointer;
+
+font-size:16px;
+}
+
+button:hover{
+background:#004d99;
+}
+
+#demo{
+
+margin-top:20px;
+
+font-size:20px;
+
+font-weight:bold;
+
+color:#0066cc;
+
+text-align:center;
+}
+
+</style>
+
+<script>
+
+function showTravel(){
+
+let place=document.getElementById("place").value;
+
+document.getElementById("demo").innerHTML=
+
+"You Selected : " + place + " Package";
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Travel Booking</h1>
+
+<table>
+
+<tr>
+<th>Package Type</th>
+<th>Details</th>
+</tr>
+
+<tr>
+
+<td>Beach Tour</td>
+
+<td>
+
+<table>
+
+<tr>
+<th>Place</th>
+<th>Days</th>
+<th>Price</th>
+</tr>
+
+<tr>
+<td>Goa</td>
+<td>5 Days</td>
+<td>₹15000</td>
+</tr>
+
+<tr>
+<td>Maldives</td>
+<td>7 Days</td>
+<td>₹50000</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Hill Station</td>
+
+<td>
+
+<table>
+
+<tr>
+<th>Place</th>
+<th>Days</th>
+<th>Price</th>
+</tr>
+
+<tr>
+<td>Manali</td>
+<td>4 Days</td>
+<td>₹12000</td>
+</tr>
+
+<tr>
+<td>Shimla</td>
+<td>3 Days</td>
+<td>₹10000</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<form>
+
+<h2>Customer Details</h2>
+
+Customer Name:
+<input type="text">
+
+Mobile Number:
+<input type="text">
+
+Select Travel Package:
+
+<select id="place">
+
+<option>Goa</option>
+<option>Maldives</option>
+<option>Manali</option>
+<option>Shimla</option>
+
+</select>
+
+<button type="button" onclick="showTravel()">
+Book Now
+</button>
+
+</form>
+
+<p id="demo"></p>
+
+</div>
+
+</body>
+</html>
