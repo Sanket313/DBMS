@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+display:flex;
+justify-content:center;
+margin-top:50px;
+}
+
+.card{
+
+width:500px;
+background:white;
+padding:20px;
+
+border-radius:15px;
+
+box-shadow:0px 0px 10px gray;
+
+text-align:center;
+
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+table,th,td{
+border:1px solid black;
+padding:10px;
+}
+
+img{
+width:150px;
+border-radius:10px;
+margin-top:15px;
+}
+
+button{
+padding:10px 20px;
+background:blue;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:darkblue;
+}
+
+</style>
+
+<script>
+
+function showDept(){
+
+document.getElementById("demo").innerHTML=
+"Computer Department";
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>College Information</h2>
+
+<table>
+
+<tr>
+<th>Department</th>
+<th>Course</th>
+</tr>
+
+<tr>
+<td>Computer</td>
+<td>BCA</td>
+</tr>
+
+<tr>
+<td>IT</td>
+<td>BSc IT</td>
+</tr>
+
+</table>
+
+<br>
+
+<img src="https://www.avcoe.org/images/gallery/1.jpg">
+
+<br><br>
+
+<a href="https://www.avcoe.org/">
+Visit College Website
+</a>
+
+<br><br>
+
+<button onclick="showDept()">
+Show Department
+</button>
+
+<p id="demo"></p>
+
+</div>
+
+</body>
+</html>
+
