@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Product Advertisement</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+}
+
+.card{
+
+width:700px;
+margin:auto;
+margin-top:40px;
+padding:20px;
+
+background:white;
+
+border-radius:15px;
+
+box-shadow:0px 0px 15px gray;
+
+text-align:center;
+
+}
+
+h2{
+color:#4CAF50;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+table,th,td{
+border:1px solid black;
+padding:12px;
+text-align:center;
+}
+
+th{
+background:#4CAF50;
+color:white;
+}
+
+img{
+width:220px;
+height:180px;
+
+border-radius:10px;
+
+margin-top:20px;
+
+box-shadow:0px 0px 10px gray;
+}
+
+button{
+padding:10px 20px;
+
+background:#4CAF50;
+
+color:white;
+
+border:none;
+
+border-radius:5px;
+
+cursor:pointer;
+
+font-size:16px;
+}
+
+button:hover{
+background:green;
+}
+
+a{
+text-decoration:none;
+background:#ff9900;
+color:white;
+padding:10px 20px;
+
+border-radius:5px;
+}
+
+#demo{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+color:#4CAF50;
+}
+
+</style>
+
+<script>
+
+function showProduct(product){
+
+document.getElementById("demo").innerHTML=
+"Selected Product: " + product;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Product Advertisement</h2>
+
+<table>
+
+<tr>
+<th>Image</th>
+<th>Product</th>
+<th>Price</th>
+<th>Action</th>
+</tr>
+
+<tr>
+
+<td>
+<img src="https://th.bing.com/th/id/OIP.ZWzrngDbdanEDDnOzvuLnAHaFk?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3">
+</td>
+
+<td>Laptop</td>
+
+<td>₹50000</td>
+
+<td>
+<button onclick="showProduct('Laptop')">
+Select
+</button>
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400">
+</td>
+
+<td>Mobile</td>
+
+<td>₹25000</td>
+
+<td>
+<button onclick="showProduct('Mobile')">
+Select
+</button>
+</td>
+
+</tr>
+
+</table>
+
+<br><br>
+
+<a href="https://www.amazon.in" target="_blank">
+Buy Products
+</a>
+
+<p id="demo"></p>
+
+</div>
+
+</body>
+</html>
