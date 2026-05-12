@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+}
+
+form{
+width:350px;
+margin:auto;
+margin-top:30px;
+padding:20px;
+background:white;
+
+border-radius:10px;
+
+box-shadow:0px 0px 10px gray;
+}
+
+input{
+width:100%;
+padding:8px;
+margin-top:5px;
+margin-bottom:10px;
+}
+
+table{
+width:80%;
+margin:auto;
+margin-top:20px;
+border-collapse:collapse;
+background:white;
+}
+
+table,th,td{
+border:1px solid black;
+padding:10px;
+text-align:center;
+}
+
+</style>
+
+<script>
+
+function validate(){
+
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+
+if(name==""){
+alert("Enter Name");
+return false;
+}
+
+if(email==""){
+alert("Enter Email");
+return false;
+}
+
+if(!email.includes("@")){
+alert("Invalid Email");
+return false;
+}
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<form method="post" onsubmit="return validate()">
+
+<h2 align="center">Employee Registration</h2>
+
+Employee Name:
+<input type="text" id="name" name="name">
+
+Email:
+<input type="text" id="email" name="email">
+
+Department:
+<input type="text" name="department">
+
+Mobile:
+<input type="text" name="mobile">
+
+<input type="submit" value="Submit">
+
+</form>
+
+<?php
+
+$file="employee.txt";
+
+if($_POST){
+
+$data=$_POST['name']."|".
+$_POST['email']."|".
+$_POST['department']."|".
+$_POST['mobile']."\n";
+
+file_put_contents($file,$data,FILE_APPEND);
+
+}
+
+if(file_exists($file)){
+
+$records=file($file);
+
+echo "<table>";
+
+echo "<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Department</th>
+<th>Mobile</th>
+</tr>";
+
+foreach($records as $r){
+
+$arr=explode("|",$r);
+
+echo "<tr>";
+
+echo "<td>".$arr[0]."</td>";
+echo "<td>".$arr[1]."</td>";
+echo "<td>".$arr[2]."</td>";
+echo "<td>".$arr[3]."</td>";
+
+echo "</tr>";
+}
+
+echo "</table>";
+}
+
+?>
+
+</body>
+</html>
+
