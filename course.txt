@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+}
+
+.card{
+width:600px;
+margin:auto;
+margin-top:40px;
+padding:20px;
+background:white;
+
+border-radius:10px;
+
+box-shadow:0px 0px 10px gray;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+table,th,td{
+border:1px solid black;
+padding:10px;
+text-align:center;
+}
+
+th{
+background:green;
+color:white;
+}
+
+input{
+width:95%;
+padding:8px;
+margin-top:10px;
+}
+
+input[type=submit]{
+background:green;
+color:white;
+border:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2 align="center">Course Enrollment</h2>
+
+<table>
+
+<tr>
+<th>Department</th>
+<th>Courses</th>
+</tr>
+
+<tr>
+
+<td>Computer</td>
+
+<td>
+
+<table>
+
+<tr>
+<th>Course</th>
+<th>Duration</th>
+</tr>
+
+<tr>
+<td>PHP</td>
+<td>3 Months</td>
+</tr>
+
+<tr>
+<td>Java</td>
+<td>4 Months</td>
+</tr>
+
+<tr>
+<td>Python</td>
+<td>2 Months</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<a href="https://www.udemy.com">
+More Courses
+</a>
+
+<form method="post">
+
+<input type="text"
+name="course"
+placeholder="Enter Course">
+
+<input type="text"
+name="duration"
+placeholder="Total Duration">
+
+<input type="submit"
+value="Enroll">
+
+</form>
+
+<?php
+$file="course.txt";
+if($_POST){
+
+echo "<h3>Enrollment Successful</h3>";
+
+$data=$_POST['course']."|".
+$_POST['duration']."\n";
+
+file_put_contents($file,$data,FILE_APPEND);
+
+}
+
+if(file_exists($file)){
+
+$records=file($file);
+
+echo "<table>";
+
+echo "<tr>
+<th>Course</th>
+<th>Duration</th>
+</tr>";
+
+foreach($records as $r){
+
+$arr=explode("|",$r);
+
+echo "<tr>";
+
+echo "<td>".$arr[0]."</td>";
+echo "<td>".$arr[1]."</td>";
+
+echo "</tr>";
+}
+
+echo "</table>";
+
+
+}
+
+?>
+
+</div>
+
+</body>
+</html>
