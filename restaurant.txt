@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Restaurant Menu</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+}
+
+.card{
+
+width:800px;
+margin:auto;
+margin-top:40px;
+padding:25px;
+
+background:white;
+
+border-radius:15px;
+
+box-shadow:0px 0px 15px gray;
+
+text-align:center;
+
+}
+
+h1{
+color:#d35400;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+table,th,td{
+border:1px solid black;
+padding:12px;
+text-align:center;
+}
+
+th{
+background:#d35400;
+color:white;
+}
+
+img{
+width:180px;
+height:130px;
+
+border-radius:10px;
+}
+
+a{
+text-decoration:none;
+
+background:#d35400;
+
+color:white;
+
+padding:10px 20px;
+
+border-radius:5px;
+}
+
+.menu{
+
+width:300px;
+margin:auto;
+margin-top:20px;
+padding:15px;
+
+background:#fff3e6;
+
+border-radius:10px;
+
+box-shadow:0px 0px 10px gray;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Restaurant Menu</h1>
+
+<table>
+
+<tr>
+<th>Image</th>
+<th>Food Item</th>
+<th>Price</th>
+</tr>
+
+<tr>
+
+<td>
+<img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500">
+</td>
+
+<td>Pizza</td>
+<td>₹250</td>
+
+</tr>
+
+<tr>
+
+<td>
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500">
+</td>
+
+<td>Burger</td>
+<td>₹150</td>
+
+</tr>
+
+<tr>
+
+<td>
+<img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=500">
+</td>
+
+<td>Pasta</td>
+<td>₹200</td>
+
+</tr>
+
+</table>
+
+<br><br>
+
+<a href="https://www.swiggy.com"
+target="_blank">
+
+Order Now
+
+</a>
+
+<?php
+
+$menu=array(
+"Pizza",
+"Burger",
+"Pasta",
+"Sandwich",
+"Cold Drink"
+);
+
+echo "<div class='menu'>";
+
+echo "<h2>Menu Items</h2>";
+
+foreach($menu as $m){
+
+echo $m."<br><br>";
+
+}
+
+echo "</div>";
+
+?>
+
+</div>
+
+</body>
+</html>
