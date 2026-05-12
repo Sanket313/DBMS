@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>To-Do List Application</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+}
+
+.card{
+
+width:450px;
+margin:auto;
+margin-top:40px;
+padding:25px;
+
+background:white;
+
+border-radius:15px;
+
+box-shadow:0px 0px 15px gray;
+
+text-align:center;
+}
+
+h2{
+color:#009688;
+}
+
+input{
+width:70%;
+padding:10px;
+
+border:1px solid gray;
+
+border-radius:5px;
+}
+
+button{
+
+padding:10px 15px;
+
+background:#009688;
+
+color:white;
+
+border:none;
+
+border-radius:5px;
+
+cursor:pointer;
+
+margin-top:10px;
+}
+
+button:hover{
+background:#00695c;
+}
+
+ul{
+list-style:none;
+padding:0;
+margin-top:20px;
+}
+
+li{
+
+background:#f9f9f9;
+
+padding:10px;
+
+margin-top:10px;
+
+border-radius:5px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+box-shadow:0px 0px 5px gray;
+}
+
+.action button{
+margin-left:5px;
+padding:5px 10px;
+}
+
+</style>
+
+<script>
+
+function addTask(){
+
+let task=document.getElementById("task").value;
+
+if(task==""){
+alert("Enter Task");
+return;
+}
+
+let li=document.createElement("li");
+
+li.innerHTML=
+
+"<span>"+task+"</span>"+
+
+"<div class='action'>"+
+
+"<button onclick='editTask(this)'>Edit</button>"+
+
+"<button onclick='deleteTask(this)'>Delete</button>"+
+
+"</div>";
+
+document.getElementById("list").appendChild(li);
+
+document.getElementById("task").value="";
+
+}
+
+function deleteTask(btn){
+
+btn.parentElement.parentElement.remove();
+
+}
+
+function editTask(btn){
+
+let oldTask=
+btn.parentElement.previousElementSibling.innerHTML;
+
+let newTask=
+prompt("Update Task",oldTask);
+
+if(newTask!=""){
+
+btn.parentElement.previousElementSibling.innerHTML=
+newTask;
+
+}
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>To-Do List</h2>
+
+<input type="text"
+id="task"
+placeholder="Enter Task">
+
+<button onclick="addTask()">
+Add Task
+</button>
+
+<ul id="list"></ul>
+
+</div>
+
+</body>
+</html>
