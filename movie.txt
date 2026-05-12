@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Movie Booking Webpage</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+}
+
+.card{
+
+width:800px;
+margin:auto;
+margin-top:40px;
+padding:25px;
+
+background:white;
+
+border-radius:15px;
+
+box-shadow:0px 0px 15px gray;
+
+}
+
+h1{
+text-align:center;
+color:#c0392b;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+table,th,td{
+border:1px solid black;
+padding:12px;
+text-align:center;
+}
+
+th{
+background:#c0392b;
+color:white;
+}
+
+img{
+width:150px;
+height:120px;
+
+border-radius:10px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin-top:8px;
+margin-bottom:15px;
+
+border:1px solid gray;
+
+border-radius:5px;
+}
+
+input[type=submit]{
+
+background:#c0392b;
+
+color:white;
+
+border:none;
+
+cursor:pointer;
+
+font-size:16px;
+}
+
+input[type=submit]:hover{
+background:#922b21;
+}
+
+.result{
+
+width:500px;
+margin:auto;
+margin-top:20px;
+padding:20px;
+
+background:white;
+
+border-radius:10px;
+
+box-shadow:0px 0px 10px gray;
+}
+
+</style>
+
+<script>
+
+function confirmBooking(){
+
+alert("Movie Ticket Booked Successfully");
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Movie Booking</h1>
+
+<table>
+
+<tr>
+<th>Movie</th>
+<th>Show Details</th>
+</tr>
+
+<tr>
+
+<td>
+
+<img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500">
+
+<br><br>
+
+Avengers
+
+</td>
+
+<td>
+
+<table>
+
+<tr>
+<th>Time</th>
+<th>Screen</th>
+<th>Price</th>
+</tr>
+
+<tr>
+<td>10:00 AM</td>
+<td>Screen 1</td>
+<td>₹250</td>
+</tr>
+
+<tr>
+<td>6:00 PM</td>
+<td>Screen 2</td>
+<td>₹300</td>
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<form method="post"
+onsubmit="confirmBooking()">
+
+Customer Name:
+<input type="text" name="name">
+
+Select Show:
+
+<select name="show">
+
+<option>10:00 AM</option>
+<option>6:00 PM</option>
+
+</select>
+
+Seats:
+<input type="number" name="seat">
+
+<input type="submit"
+value="Book Ticket">
+
+</form>
+
+</div>
+
+<?php
+
+$file="movie.txt";
+
+if($_POST){
+
+$data=$_POST['name']."|".
+$_POST['show']."|".
+$_POST['seat']."\n";
+
+file_put_contents($file,$data,FILE_APPEND);
+
+}
+
+if(file_exists($file)){
+
+$records=file($file);
+
+echo "<div class='result'>";
+
+echo "<h2>Booking Details</h2>";
+
+echo"<table>";
+
+echo "<tr>
+
+<th>Name</th>
+<th>Show</th>
+<th>Seats</th>
+
+</tr>";
+
+foreach($records as $r){
+
+$arr=explode("|",$r);
+echo "<tr>";
+
+echo "<td>".$arr[0]."</td>";
+
+echo "<td>".$arr[1]."</td>";
+
+echo "<td> ".$arr[2]."</td>";
+
+echo "</tr>";
+}
+echo"</table>";
+echo "</div>";
+
+}
+
+?>
+
+</body>
+</html>
