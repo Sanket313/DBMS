@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Tourism Webpage</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+}
+
+.card{
+
+width:900px;
+margin:auto;
+margin-top:40px;
+padding:25px;
+
+background:white;
+
+border-radius:15px;
+
+box-shadow:0px 0px 15px gray;
+
+text-align:center;
+}
+
+h1{
+color:#009688;
+}
+
+.place{
+
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.box{
+
+width:250px;
+padding:15px;
+
+background:#f9f9f9;
+
+border-radius:10px;
+
+box-shadow:0px 0px 10px gray;
+
+margin-bottom:20px;
+}
+
+img{
+width:100%;
+height:180px;
+
+border-radius:10px;
+}
+
+button{
+
+margin-top:10px;
+padding:10px 15px;
+
+background:#009688;
+
+color:white;
+
+border:none;
+
+border-radius:5px;
+
+cursor:pointer;
+}
+
+button:hover{
+background:#00695c;
+}
+
+a{
+
+text-decoration:none;
+
+background:#ff9800;
+
+color:white;
+
+padding:8px 15px;
+
+border-radius:5px;
+display:inline-block;
+
+margin-top:10px;
+}
+
+#demo{
+
+margin-top:25px;
+
+font-size:22px;
+
+font-weight:bold;
+
+color:#009688;
+}
+
+</style>
+
+<script>
+
+function showPlace(place){
+
+document.getElementById("demo").innerHTML=
+
+"Selected Tourist Place : " + place;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Tourism Webpage</h1>
+
+<div class="place">
+
+<div class="box">
+
+<img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800">
+
+<h3>Taj Mahal</h3>
+
+<a href="https://www.incredibleindia.gov.in/en/uttar-pradesh/agra/taj-mahal"
+target="_blank">
+
+Visit
+
+</a>
+
+<br><br>
+
+<button onclick="showPlace('Taj Mahal')">
+
+Select Place
+
+</button>
+
+</div>
+
+<div class="box">
+
+<img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800">
+
+<h3>Goa Beach</h3>
+
+<a href="https://www.klook.com/en-IN/destination/c178-goa/1-things-to-do/?_currency=INR&utm_source=bing&utm_medium=cpc&campaignid=663534259&adgroupid=1317217590366644&targetid=kwd-82327542789638%3Aloc-90&matchtype=b&device=c&creative=82326341552943&keyword=goa%20tourist%20places&loc_interest_ms=1655&loc_physical_ms=260742&network=o&utm_content=campaignid_663534259_adgroupid_1317217590366644&msclkid=2429e31c14921936889f891ec6f2cd23&dd_referrer=https%3A%2F%2Fwww.bing.com%2F"
+target="_blank">
+
+Visit
+
+</a>
+
+<br><br>
+
+<button onclick="showPlace('Goa Beach')">
+
+Select Place
+
+</button>
+
+</div>
+
+<div class="box">
+
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800">
+
+<h3>Manali</h3>
+
+<a href="https://himachaltourism.gov.in"
+target="_blank">
+
+Visit
+
+</a>
+
+<br><br>
+
+<button onclick="showPlace('Manali')">
+
+Select Place
+
+</button>
+
+</div>
+
+</div>
+
+<p id="demo"></p>
+
+</div>
+
+</body>
+</html>
